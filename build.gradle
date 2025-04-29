@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.antonio.blog'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation("com.microsoft.playwright:playwright:1.50.0")
+    implementation("org.testng:testng:7.10.2")
+    annotationProcessor 'org.projectlombok:lombok:1.18.36'
+    compileOnly("org.projectlombok:lombok:1.18.36")
+}
+
+test {
+    useJUnitPlatform()
+}
