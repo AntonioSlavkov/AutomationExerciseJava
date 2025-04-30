@@ -15,6 +15,7 @@ public class AutomationExercise {
     private Jeans jeans;
     private ConfirmationModal confirmationModal;
     private HeaderPage headerPage;
+    private Cart cart;
 
     @BeforeSuite
     private void initialize() throws InvalidBrowserType {
@@ -28,6 +29,7 @@ public class AutomationExercise {
         this.jeans = new Jeans(this.common);
         this.confirmationModal = new ConfirmationModal(this.common);
         this.headerPage = new HeaderPage(this.common);
+        this.cart = new Cart(this.common);
     }
 
     @Test
@@ -42,17 +44,21 @@ public class AutomationExercise {
         this.category.clickJeans();
 
         Reporter.log("Step 3 - Add jeans");
-        this.jeans.clickAddToCartGruntBlueSlimFitJeans();
+        this.jeans.clickAddToCartSoftStretchJeans();
         this.confirmationModal.clickContinueShopping();
 
         this.jeans.clickAddToCartRegularFitStraightJeans();
         this.confirmationModal.clickContinueShopping();
 
-        this.jeans.clickAddToCartSoftStretchJeans();
+        this.jeans.clickAddToCartGruntBlueSlimFitJeans();
         this.confirmationModal.clickContinueShopping();
 
         Reporter.log("Step 4 - Navigate to cart and validate that the jeans are there");
         this.headerPage.navigateToCart();
+
+        this.cart.validateJeans("1", "Soft Stretch Jeans", "Rs. 799", "1", "Rs. 799");
+        this.cart.validateJeans("2", "Regular Fit Straight Jeans", "Rs. 1200", "1", "Rs. 1200");
+        this.cart.validateJeans("3", "Grunt Blue Slim Fit Jeans", "Rs. 1400", "1", "Rs. 1400");
 
     }
 }

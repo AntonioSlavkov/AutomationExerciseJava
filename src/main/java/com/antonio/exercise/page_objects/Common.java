@@ -17,5 +17,9 @@ public class Common {
         this.page.click(locator);
     }
 
+    public String getTextFromLocator (String locator) {
+       return this.page.textContent(locator);
+    }
+
 
 }

@@ -19,14 +19,22 @@ public class PlaywrightConfiguration {
 
         switch (browser) {
             case "chromium":
-                this.browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(headless));
+                this.browser = playwright.chromium().launch(new BrowserType
+                        .LaunchOptions()
+                        .setSlowMo(500)
+                        .setHeadless(headless));
                 break;
             case "firefox":
-                this.browser = playwright.firefox().launch(new BrowserType.LaunchOptions().setHeadless(headless));
+                this.browser = playwright.firefox().launch(new BrowserType
+                        .LaunchOptions()
+                        .setSlowMo(500)
+                        .setHeadless(headless));
                 break;
             case "chrome":
-                this.browser = playwright.chromium().launch(new BrowserType.LaunchOptions()
+                this.browser = playwright.chromium().launch(new BrowserType
+                        .LaunchOptions()
                         .setChannel("chrome") // use actual Chrome
+                        .setSlowMo(500)
                         .setHeadless(headless));
                 break;
             default:
